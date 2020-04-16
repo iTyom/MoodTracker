@@ -3,7 +3,6 @@
     "dir": "ltr",
     "name": "MoodTracker",
     "short_name": "MoodTracker",
-    "scope": "/",
     "icons": [{
         "src": "\/assets\/img\/logo\/logopwa.png",
         "sizes": "128x128",
