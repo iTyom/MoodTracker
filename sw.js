@@ -1,14 +1,7 @@
 // This is the "Offline page" service worker
 const CACHE = "serviceWorker-cache";
 
-const offlineFallbackPage = [
-    '/',
-    'assets/img/',
-    'assets/js/',
-    'assets/css/',
-    'assets/fonts/',
-    'index.html',
-  ];
+const offlineFallbackPage = 'index.html';
 
 // Install stage sets up the offline page in the cache and opens a new cache
 self.addEventListener("install", function (event) {
@@ -16,7 +9,7 @@ self.addEventListener("install", function (event) {
     event.waitUntil(
         caches.open(CACHE).then(function (cache) {
             console.log("[PWA Builder] Cached offline page during install");
-            return cache.addAll(offlineFallbackPage);
+            return cache.add(offlineFallbackPage);
         })
     );
 });
