@@ -1,0 +1,27 @@
+<div class="pageDecrypt">
+
+  <div class="header">
+    <h1>Bonjour {{user.login}}</h1>
+  </div>
+
+  <div class="body">
+    <div class="wrapperValidationSlug">
+      <button mat-flat-button color="primary" (click)="getValidationSlug()">Récupérer le message de
+        validation</button>
+    </div>
+    <div *ngIf="validationSlug" class="">
+      Le message de validation est : {{validationSlug}} <br>
+      <!-- <button mat-flat-button color="primary" (click)="getBatch()">Récupérer le batch a décrypter</button> -->
+
+    </div>
+    <div *ngIf="result"> {{result}} </div>
+    <div *ngIf="error" [innerHTML]='error'></div>
+  </div>
+
+  <div>
+
+  </div>
+
+
+
+</div>

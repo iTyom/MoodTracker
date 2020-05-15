@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb://localhost/enigma",
+    "secret": "Its secret"
+}

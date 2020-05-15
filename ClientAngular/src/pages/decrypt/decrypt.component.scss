@@ -1,0 +1,28 @@
+div.pageDecrypt {
+    height: 100vh;
+
+    div.header {
+        width: 100%;
+        text-align: center;
+    }
+
+    div.body {
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        div.wrapperValidationSlug {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            button {
+                width: 250px;
+                align-self: center;
+            }
+        }
+    }
+}
