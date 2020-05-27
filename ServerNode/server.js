@@ -29,7 +29,6 @@ app.use(function (req, res, next) {
 });
 
 // api routes
-app.use('/enigma', require('./src/controllers/enigma.controller'));
 app.use('/post', require('./src/controllers/post.controller'));
 
 socketService.defineSocket(server);

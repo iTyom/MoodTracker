@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../pages/login/login.component';
@@ -15,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SocketService } from '../services/websocket.service';
 import { DecryptComponent } from '../pages/decrypt/decrypt.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,8 @@ import { DecryptComponent } from '../pages/decrypt/decrypt.component';
     MatButtonModule,
     FormsModule,
     HttpClientModule,
+    // ServiceWorkerModule.register('sw.js', { enabled: true }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [SocketService],
   bootstrap: [AppComponent]
