@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-   text: String,
+   text: { type: String, required: true },
    postedBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'User',
+      required: true
    },
-   allegiance: String
+   allegiance: { type: String, required: true }
 });
 
 schema.set('toJSON', { virtuals: true });
