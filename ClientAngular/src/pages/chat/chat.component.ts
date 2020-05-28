@@ -24,6 +24,9 @@ export class ChatComponent implements OnInit {
 
   }
 
+  getPosts() {
+  }
+
   ngOnInit() {
     this.post.allegiance = "demon";
     // this.postService.

@@ -27,16 +27,16 @@ export class PostService {
         console.log("PostService -> addPost -> post", post);
         return this.httpClient.post(this.serverApi, post, { headers: headers });
 
-      }
+    }
 
 
     public getPosts() {
-      const headers = new HttpClient({
-        Authorization: this.authService.getToken(), 'Access-Control-Allow-Origin': this.allowedOrigin,
-        'Access-Control-Allow-Methods': 'GET',
-      });
+        const headers = new HttpHeaders({
+            Authorization: this.authService.getToken(), 'Access-Control-Allow-Origin': this.allowedOrigin,
+            'Access-Control-Allow-Methods': 'GET',
+        });
 
-        return this.httpClient.get(this.serverApiGetPost, { headers : headers });
+        return this.httpClient.get(this.serverApiGetPost, { headers: headers });
     }
 
 }

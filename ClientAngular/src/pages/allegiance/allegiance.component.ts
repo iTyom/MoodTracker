@@ -7,7 +7,7 @@ import { AuthService } from 'src/services/auth.service';
 @Component({
   selector: 'app-allegiance',
   templateUrl: './allegiance.component.html',
-  styleUrls: ['./allegiance.component.scss']
+  styleUrls: ['./allegiance.component.scss'],
 })
 export class AllegianceComponent implements OnInit {
 
@@ -21,13 +21,16 @@ export class AllegianceComponent implements OnInit {
   }
 
   async init() {
-    this.posts = await this.getPosts().toPromise();
+    await this.getPosts();
     console.log('coucou');
   }
 
   async getPosts() {
     console.log('3');
-    this.postService.getPosts();
+    const response = this.postService.getPosts().toPromise();
+    if (response) {
+      console.log("AllegianceComponent -> getPosts -> response", response);
+    }
   }
 
 }
