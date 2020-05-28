@@ -20,9 +20,9 @@
 
 <div class="wrapper">
   <div *ngIf="post" class="form-post">
-    <div>
-      <button mat-flat-button color="warn" (click)="addDemonPost()">Demon</button>
-      <button mat-flat-button color="primary" (click)="addAngePost()">Ange</button>
+    <div style="display: flex;justify-content: center; align-items: center;">
+      <button style="width:50%" mat-flat-button color="warn" (click)="addDemonPost()">Demon</button>
+      <button style="width:50%" mat-flat-button color="primary" (click)="addAngePost()">Ange</button>
     </div>
 
     <mat-form-field class="password-field" appearance="outline">
