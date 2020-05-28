@@ -7,7 +7,7 @@ MoodApp est une application de développement personnel. Elle vous propose de cl
 ## Ou je peux voir la documentation?
 Voir [MoodTracker Documentation](https://github.com/iTyom/MoodTracker/wiki)
 
-## Comment build et démarrer le projet
+## Comment build et démarrer le projet?
 Voir [MoodTracker build instructions](https://github.com/iTyom/MoodTracker/wiki/3.-Installation)
 
 ## Author
