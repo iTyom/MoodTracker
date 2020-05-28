@@ -102,13 +102,13 @@
   <script src="./assets/js/plugins.js"></script>
   <script src="./assets/js/main.js"></script>
 
-  <!-- <script>
+  <script>
     if ("serviceWorker" in navigator) {
       if (navigator.serviceWorker.controller) {
         console.log("[PWA Builder] active service worker found, no need to register");
       } else {
         navigator.serviceWorker
-          .register("ngsw-config.js", {
+          .register("sw.js", {
             scope: "./"
           })
           .then(function (reg) {
@@ -117,7 +117,7 @@
       }
     }
 
-  </script> -->
+  </script>
 
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>

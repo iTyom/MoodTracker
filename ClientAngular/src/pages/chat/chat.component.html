@@ -22,8 +22,12 @@
   <div *ngIf="post" class="form-post">
     <div style="display: flex;justify-content: center; align-items: center;flex-direction: column;">
       <div style="display: flex;justify-content: center; align-items: center; width: 100%;">
-        <img src="../../assets/img/brakmar.png" width="180" style=" position: relative; top: 55px;">
-        <img src="../../assets/img/bonta.png" width="200" style=" position: relative; top: 65px;">
+        <div style="width: 50%;">
+          <img src="../../assets/img/brakmar.png" width="180" style=" position: relative; top: 55px;">
+        </div>
+        <div>
+          <img src="../../assets/img/bonta.png" width="200" style=" position: relative; top: 65px;">
+        </div>
       </div>
       <div style="width: 100%;">
         <button class="btn-demon" style="width:50%" mat-flat-button (click)="addDemonPost()">Demon</button>

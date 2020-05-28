@@ -1,7 +1,7 @@
 // This is the "Offline page" service worker
 const CACHE = "serviceWorker-cache";
 
-const offlineFallbackPage = '/index.html';
+const offlineFallbackPage = '/login';
 
 // Install stage sets up the offline page in the cache and opens a new cache
 self.addEventListener("install", function (event) {
