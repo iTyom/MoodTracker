@@ -20,10 +20,10 @@ export class ChatComponent implements OnInit {
   constructor(private socketService: SocketService,
     private postService: PostService,
     private authService: AuthService,
-    private router:Router) {
-      if (!authService.isUserConnected()) {
-        this.router.navigate(['/login'])
-      }
+    private router: Router) {
+    if (!authService.isUserConnected()) {
+      this.router.navigate(['/login']);
+    }
   }
 
   ngOnInit() {

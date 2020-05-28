@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Post } from 'src/models/post.model';
 import { SocketService } from 'src/services/websocket.service';
 import { PostService } from 'src/services/post.service';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   selector: 'app-allegiance',
   templateUrl: './allegiance.component.html',
   styleUrls: ['./allegiance.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AllegianceComponent implements OnInit {
 
@@ -23,10 +24,10 @@ export class AllegianceComponent implements OnInit {
     private postService: PostService,
     private authService: AuthService,
     private router: Router) {
-      if (!authService.isUserConnected()) {
-        this.router.navigate(['/login'])
-      }
+    if (!authService.isUserConnected()) {
+      this.router.navigate(['/login']);
     }
+  }
 
   ngOnInit() {
     this.init();
