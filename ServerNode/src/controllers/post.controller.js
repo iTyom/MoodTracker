@@ -40,7 +40,6 @@ async function addPost(req, res, next) {
         })
         .then(user => {
             if (user) {
-                console.log("addPost -> user", user);
                 var post = new db.Post({
                     text: req.body.text,
                     allegiance: req.body.allegiance,

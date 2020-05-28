@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SocketService } from 'src/services/websocket.service';
 import { PostService } from 'src/services/post.service';
 import { AuthService } from 'src/services/auth.service';
@@ -8,6 +8,7 @@ import { Post } from 'src/models/post.model';
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ChatComponent implements OnInit {
   post: Post = new Post();

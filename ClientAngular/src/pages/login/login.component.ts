@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { User } from "../../models/login.model";
 import { AuthService } from "../../services/auth.service";
 import { SocketService } from "../../services/websocket.service";
@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
   public user: User;
