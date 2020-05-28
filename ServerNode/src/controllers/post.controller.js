@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('../../_helpers/jwt');
 const db = require('../../_helpers/db');
-
+var mongoose = require('mongoose');
 
 // routes
 router.post('/addPost', jwt.isAuthorized, addPost);
@@ -13,18 +13,22 @@ router.get('/getPostsByAllegiance', jwt.isAuthorized, getPostsByAllegiance);
 module.exports = router;
 
 function getPosts(req, res, next) {
+    console.log("getPosts -> req.userId", req.userId);
     db.Post.find({
-            'postedBy._id': req.userId
+            'postedBy': mongoose.Types.ObjectId(req.userId),
         })
-        .then(data => data ? res.json(data) : res.status(400).json({
-            message: "Erreur"
-        }))
-        .catch(err => next(err));
+        .then((data) => {
+            if (data) {
+                res.json(data);
+            } else {
+                message: "Erreur"
+            }
+        }).catch(err => next(err));
 }
 
 function getPostsByAllegiance(req, res, next) {
     db.Post.find({
-            'postedBy._id': req.params.userId,
+            'postedBy': req.params.userId,
             'allegiance': req.params.allegiance
         })
         .then(data => data ? res.json(data) : res.status(400).json({
