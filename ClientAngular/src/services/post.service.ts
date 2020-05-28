@@ -13,6 +13,7 @@ export class PostService {
     private allowedOrigin: string[] = ['http://localhost:8008'];
     private authApiRegister = "http://localhost:8004/auth/register";
     private serverApi = "http://localhost:8008/post/addPost";
+    private serverApiGetPost = "http://localhost:8008/post/getPosts";
 
     constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
@@ -25,6 +26,15 @@ export class PostService {
 
         console.log("PostService -> addPost -> post", post);
         return this.httpClient.post(this.serverApi, post, { headers: headers });
+
+
+    public getPost(user: string) {
+      const header = new HttpClient({
+        Authorization: user, 'Access-Control-Allow-Origin': this.allowedOrigin,
+        'Access-Control-Allow-Methods': 'GET,POST',
+      });
+
+        return this.httpClient.get(this.serverApiGetPost, { headers });
     }
 
 }
