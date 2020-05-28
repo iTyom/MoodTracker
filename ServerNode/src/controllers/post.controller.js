@@ -13,36 +13,49 @@ router.get('/getPostsByAllegiance', jwt.isAuthorized, getPostsByAllegiance);
 module.exports = router;
 
 function getPosts(req, res, next) {
-    db.Post.find({ 'postedBy._id': req.params.userId })
-    .then(data => data ? res.json(data) : res.status(400).json({
-        message: "Erreur"
-    }))
-    .catch(err => next(err));
+    db.Post.find({
+            'postedBy._id': req.params.userId
+        })
+        .then(data => data ? res.json(data) : res.status(400).json({
+            message: "Erreur"
+        }))
+        .catch(err => next(err));
 }
 
 function getPostsByAllegiance(req, res, next) {
-    db.Post.find({ 'postedBy._id': req.params.userId, 'allegiance': req.params.allegiance })
-    .then(data => data ? res.json(data) : res.status(400).json({
-        message: "Erreur"
-    }))
-    .catch(err => next(err));
+    db.Post.find({
+            'postedBy._id': req.params.userId,
+            'allegiance': req.params.allegiance
+        })
+        .then(data => data ? res.json(data) : res.status(400).json({
+            message: "Erreur"
+        }))
+        .catch(err => next(err));
 }
 
-function addPost(req, res, next) {
-    db.User.findOne({'_id': req.params.userId })
-    .then(user => {
-        if (user){
-            var post = new db.Post({ text: req.params.text, allegiance: req.params.allegiance , postedBy: user });
-            post.save()
-            .then(data => data ? res.status(201).json(post) : res.status(400).json({
-                message: "Erreur"
-            }))
-            .catch(err => next(err));
-        } else {
-            res.status(400).json({
-                message: "Erreur"
-            })
-        }
-      })
-    .catch(err => next(err));
+async function addPost(req, res, next) {
+
+    db.User.findOne({
+            '_id': req.userId
+        })
+        .then(user => {
+            if (user) {
+                console.log("addPost -> user", user);
+                var post = new db.Post({
+                    text: req.body.text,
+                    allegiance: req.body.allegiance,
+                    postedBy: user
+                });
+                post.save()
+                    .then(data => data ? res.status(201).json(post) : res.status(400).json({
+                        message: "Erreurs"
+                    }))
+                    .catch(err => next(err));
+            } else {
+                res.status(400).json({
+                    message: "Erreurss"
+                })
+            }
+        })
+        .catch(err => next(err));
 }

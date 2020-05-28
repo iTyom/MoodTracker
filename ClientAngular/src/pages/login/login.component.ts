@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private socketService: SocketService,
-    private router: Router
-  ) {}
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.user = new User();
@@ -35,14 +35,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     const loginEncode: string = btoa(
-      this.user.login + ":" + this.user.password
+      this.user.login + ":" + this.user.password,
     );
 
     this.authService.login(loginEncode).subscribe((data: User) => {
       this.user = data;
+      console.log("LoginComponent -> login -> data", data);
       if (this.user.token) {
+        localStorage.setItem("user", this.user.toString());
         localStorage.setItem("token", this.user.token);
-        this.router.navigate(["decrypt"]);
+        this.router.navigate(["chat"]);
       }
     });
   }

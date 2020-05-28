@@ -1,6 +1,6 @@
 {
-  "name": "EnigmaClient",
-  "short_name": "EnigmaClient",
+  "name": "Mood Tracker",
+  "short_name": "Mood Tracker",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

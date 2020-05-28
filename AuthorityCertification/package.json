@@ -1,7 +1,7 @@
 {
-  "name": "enigmaynov",
+  "name": "AuthCertification",
   "version": "1.0.0",
-  "description": "TP Enigma for Ynov Web Services",
+  "description": "Authorité de Certification",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iTyom/Enigma2.0Ynov.git"
+    "url": "git+https://github.com/iTyom/moodtracker.git"
   },
   "author": "Msfts",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iTyom/Enigma2.0Ynov/issues"
+    "url": "https://github.com/iTyom/moodtracker/issues"
   },
-  "homepage": "https://github.com/iTyom/Enigma2.0Ynov#readme",
+  "homepage": "https://github.com/iTyom/moodtracker#readme",
   "dependencies": {
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",

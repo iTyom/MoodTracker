@@ -3,59 +3,31 @@ import { Observable } from 'rxjs';
 import { Observer } from 'rxjs';
 // import { Message } from '../model/message';
 import { Event } from '../models/enum';
-
+import { Socket } from 'ngx-socket-io';
 import * as socketIo from 'socket.io-client';
-import { batch } from '../pages/decrypt/decrypt.component';
 import { User } from 'src/models/login.model';
 
 const SERVER_URL = 'http://localhost:8008';
 
 @Injectable()
 export class SocketService {
-    private socket;
 
-    public initSocket(): void {
-        this.socket = socketIo(SERVER_URL);
-    }
-
-    public initSocketServeyr(): void {
-
-    }
-
-    public send(message: any): void {
-        this.socket.emit('message', message);
-    }
-
-    public sendDecryptedBatch(decryptedBatch: any): void {
-        this.socket.emit('decryptedBatch', decryptedBatch);
-    }
+    constructor(private socket: Socket) { }
 
     public sendUser(user: User): void {
         this.socket.emit('user', user);
     }
 
-    public sendNotAvailable(timeToWait: number) {
-        this.socket.emit('notAvailable', timeToWait);
+    public sendMessage(message) {
+        console.log("SocketService -> sendMessage -> message", message);
+        this.socket.emit('new-message', message);
     }
 
-    public onMessage(): Observable<any> {
-        return new Observable<any>(observer => {
-            this.socket.on('message', (data: any) => observer.next(data));
-        });
-    }
-
-    public onBatch(): Observable<batch> {
-        return new Observable<batch>(observer => {
-            this.socket.on('batch', (data) => {
-                console.log("data : ")
-                observer.next(data);
+    public getMessages = () => {
+        return Observable.create((observer) => {
+            this.socket.on('new-message', (message) => {
+                observer.next(message);
             });
-        })
-    }
-
-    public onEvent(event: Event): Observable<any> {
-        return new Observable<Event>(observer => {
-            this.socket.on(event, () => observer.next());
         });
     }
 }

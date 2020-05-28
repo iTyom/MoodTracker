@@ -10,19 +10,23 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatRippleModule
+  MatRippleModule,
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SocketService } from '../services/websocket.service';
-import { DecryptComponent } from '../pages/decrypt/decrypt.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { RegisterComponent } from '../pages/register/register.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ChatComponent } from '../pages/chat/chat.component';
+const config: SocketIoConfig = { url: 'http://localhost:8008', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DecryptComponent,
+    RegisterComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +40,9 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     // ServiceWorkerModule.register('sw.js', { enabled: true }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    SocketIoModule.forRoot(config),
   ],
   providers: [SocketService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

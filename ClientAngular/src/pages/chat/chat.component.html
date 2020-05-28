@@ -1,0 +1,9 @@
+<div *ngFor="let message of messageList">
+  {{message}}
+</div>
+
+<div *ngIf="post">
+  <input [(ngModel)]="post.text" (keyup)="$event.keyCode == 13 && addPost()" />
+  <button (click)="addPost()">Send Message</button>
+
+</div>

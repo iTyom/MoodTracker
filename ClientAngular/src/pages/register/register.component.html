@@ -1,4 +1,4 @@
-<div class="wrapper-login">
+<div class="wrapper-register">
 
   <div class="form">
     <div class="wrapper-input">
@@ -11,9 +11,14 @@
         <mat-label>Mot de passe</mat-label>
         <input matInput type="password" placeholder="Ton mot de passe" [(ngModel)]="user.password">
       </mat-form-field>
+
+      <mat-form-field class="password-field" appearance="outline">
+        <mat-label>Vérification mot de passe</mat-label>
+        <input matInput type="password" placeholder="Vérification mot de passe" [(ngModel)]="user.password">
+      </mat-form-field>
     </div>
-    <button mat-flat-button color="primary" (click)="login()">Se connecter</button>
-    <a mat-flat-button color="primary" [routerLink]="'/register'">S'enregistrer</a>
+    <button mat-flat-button color="primary" (click)="register()">S'enregistrer</button>
+    <a mat-flat-button color="primary" [routerLink]="'/login'">Se connecter</a>
   </div>
 
 </div>

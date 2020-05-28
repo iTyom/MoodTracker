@@ -1,5 +1,3 @@
-const enigmaService = require('./enigma.service')
-
 module.exports = {
 	defineSocket
 };
@@ -9,20 +7,23 @@ function defineSocket(server) {
 	const io = require('socket.io').listen(server);
 	io.on('connection', async function (socket) {
 
-		const batch = await enigmaService.getBatch();
-
 		socket.on('user', user => {
 			console.log('user : ', user)
-
 		});
 
-		socket.emit('batch', {
-			type: 'batch',
-			data: batch,
+		socket.on('new-message', (message) => {
+			console.log("defineSocket -> message", message);
+			io.emit(message);
 		});
-		socket.on('decryptedBatch', decryptedBatch => {
-			enigmaService.getDecryptedMessage(decryptedBatch);
-		});
+
+
+		// socket.emit('exemple', {
+		// 	type: 'exemple',
+		// 	data: data,
+		// });
+		// socket.on('exemple', exemple => {
+		// 	postService.exemple(exemple);
+		// });
 
 	});
 }

@@ -1,9 +1,21 @@
 const express = require('express');
 const app = express();
 const port = 8008;
+
+const http = require('http');
+
+
+
+
 const cors = require('cors');
+
 const socketService = require('./src/services/websocket.service')
 app.use(cors());
+
+
+
+
+
 
 
 const server = app.listen(port, function () {

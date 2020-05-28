@@ -1,7 +1,7 @@
 {
-  "name": "enigmaserver",
+  "name": "MoodTrackerServer",
   "version": "1.0.0",
-  "description": "EnigmaServerSide",
+  "description": "MoodTracker ServerSide",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iTyom/Enigma2.0Ynov.git"
+    "url": "git+https://github.com/iTyom/MoodTracker.git"
   },
   "author": "Msfts",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iTyom/Enigma2.0Ynov/issues"
+    "url": "https://github.com/iTyom/MoodTracker/issues"
   },
-  "homepage": "https://github.com/iTyom/Enigma2.0Ynov#readme",
+  "homepage": "https://github.com/iTyom/MoodTracker#readme",
   "dependencies": {
     "body-parser": "^1.7.0",
     "cors": "^2.8.5",
