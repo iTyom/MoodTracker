@@ -11,7 +11,11 @@ import { AuthService } from 'src/services/auth.service';
 })
 export class AllegianceComponent implements OnInit {
 
-  public posts: Post;
+  private posts: Post;
+  public demons: [];
+  public angels:[];
+  public ratioAngels: int;
+  public ratioDemons: int;
 
   constructor(private socketService: SocketService, private postService: PostService, private authService: AuthService) { }
 
@@ -22,6 +26,8 @@ export class AllegianceComponent implements OnInit {
 
   async init() {
     await this.getPosts();
+    await this.getDemonMessages();
+    await this.getAngelMessages();
     console.log('coucou');
   }
 
@@ -30,7 +36,24 @@ export class AllegianceComponent implements OnInit {
     const response = await this.postService.getPostsByAllegience('demon').toPromise();
     if (response) {
       console.log("AllegianceComponent -> getPosts -> response", response);
+
+      this.posts = response;
     }
   }
 
+  async getDemonMessages()
+  {
+      this.demons = this.posts.filter(a => a.allegiance === 'demon');
+
+      this.ratioDemons = (this.demons.length/this.posts.length) * 100
+
+
+  }
+
+  async getAngelMessages()
+  {
+      this.angels = this.posts.filter(a => a.allegiance === 'ange');
+
+      this.ratioAngels = (this.angels.length/this.posts.length) * 100
+  }
 }
