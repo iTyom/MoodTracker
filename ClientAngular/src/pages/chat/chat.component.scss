@@ -8,7 +8,8 @@ app-chat {
 
     .column {
       width: 50%;
-      max-height: 550px;
+      max-height: 70vh;
+      height: 100%;
       overflow: auto;
       border: 1px solid black;
     }
@@ -18,7 +19,7 @@ app-chat {
 
     .form-post {
       position: absolute;
-      bottom: 0px;
+      bottom: -30px;
       width: 100%;
 
       button {

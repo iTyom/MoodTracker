@@ -2,13 +2,13 @@
   <div class="flexDisplay example-container">
     <div cdkDropList [cdkDropListData]="demonPosts" cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)"
       class="example-list column">
-      <div cdkDrag class="example-box" *ngFor="let demonPost of demonPosts">
+      <div class="example-box" *ngFor="let demonPost of demonPosts">
         {{demonPost.text}}
       </div>
     </div>
     <div cdkDropList [cdkDropListData]="angePosts" cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)"
       class="example-list column">
-      <div cdkDrag class="example-box" *ngFor="let angePost of angePosts">
+      <div class="example-box" *ngFor="let angePost of angePosts">
         {{angePost.text}}
       </div>
     </div>

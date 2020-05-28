@@ -11,11 +11,11 @@ import { AuthService } from 'src/services/auth.service';
 })
 export class AllegianceComponent implements OnInit {
 
-  private posts: Post;
-  public demons: [];
-  public angels: [];
-  public ratioAngels: int;
-  public ratioDemons: int;
+  private posts: Post[];
+  public demons: Post[];
+  public angels: Post[];
+  public ratioAngels: number;
+  public ratioDemons: number;
 
   constructor(private socketService: SocketService, private postService: PostService, private authService: AuthService) { }
 
@@ -37,14 +37,14 @@ export class AllegianceComponent implements OnInit {
     if (response) {
       console.log("AllegianceComponent -> getPosts -> response", response);
 
-      this.posts = response;
+      this.posts = response as Post[];
     }
   }
 
   async getDemonMessages() {
     this.demons = this.posts.filter(a => a.allegiance === 'demon');
 
-    this.ratioDemons = (this.demons.length / this.posts.length) * 100
+    this.ratioDemons = (this.demons.length / this.posts.length) * 100;
 
 
   }
@@ -52,7 +52,7 @@ export class AllegianceComponent implements OnInit {
   async getAngelMessages() {
     this.angels = this.posts.filter(a => a.allegiance === 'ange');
 
-    this.ratioAngels = (this.angels.length / this.posts.length) * 100
+    this.ratioAngels = (this.angels.length / this.posts.length) * 100;
   }
 
 }
