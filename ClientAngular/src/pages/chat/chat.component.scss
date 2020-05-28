@@ -8,6 +8,8 @@ app-chat {
 
     .column {
       width: 50%;
+      max-height: 550px;
+      overflow: auto;
       border: 1px solid black;
     }
   }
