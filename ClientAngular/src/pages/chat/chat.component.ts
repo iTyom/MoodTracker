@@ -4,6 +4,7 @@ import { PostService } from 'src/services/post.service';
 import { AuthService } from 'src/services/auth.service';
 import { Post } from 'src/models/post.model';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -16,8 +17,14 @@ export class ChatComponent implements OnInit {
   messageList: string[] = [];
   demonPosts: Post[] = [];
   angePosts: Post[] = [];
-  constructor(private socketService: SocketService, private postService: PostService, private authService: AuthService) {
-    this.init();
+  constructor(private socketService: SocketService,
+    private postService: PostService,
+    private authService: AuthService,
+    private router:Router) {
+      if (!authService.isUserConnected()) {
+        this.router.navigate(['/login'])
+      }
+      this.init();
   }
 
   init() {
