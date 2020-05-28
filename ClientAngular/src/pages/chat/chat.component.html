@@ -1,17 +1,37 @@
-<div *ngFor="let message of messageList">
-  {{message}}
+<div class="wrapper-posts" cdkDropListGroup>
+  <div class="flexDisplay example-container">
+    <div cdkDropList [cdkDropListData]="demonPosts" cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)"
+      class="example-list column">
+      <div cdkDrag class="example-box" *ngFor="let demonPost of demonPosts">
+        {{demonPost.text}}
+      </div>
+    </div>
+    <div cdkDropList [cdkDropListData]="angePosts" cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)"
+      class="example-list column">
+      <div cdkDrag class="example-box" *ngFor="let angePost of angePosts">
+        {{angePost.text}}
+      </div>
+    </div>
+  </div>
+
+  <div cdkDrag [innerHTML]="post.text" class="message-to-send example-box"></div>
+
 </div>
 
 <div class="wrapper">
   <div *ngIf="post" class="form-post">
-    <div cdkDrag [innerHTML]="post.text" class="message-to-send"></div>
+    <div>
+      <button mat-flat-button color="warn" (click)="addDemonPost()">Demon</button>
+      <button mat-flat-button color="primary" (click)="addAngePost()">Ange</button>
+    </div>
+
     <mat-form-field class="password-field" appearance="outline">
       <mat-label>Message</mat-label>
       <input matInput type="text" (keyup)="$event.keyCode == 13 && addPost()" placeholder="Message"
         [(ngModel)]="post.text">
     </mat-form-field>
 
-    <button mat-flat-button color="primary" (click)="addPost()">Send Message</button>
+
 
   </div>
 </div>

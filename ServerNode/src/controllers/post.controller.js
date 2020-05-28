@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 // routes
 router.post('/addPost', jwt.isAuthorized, addPost);
 router.get('/getPosts', jwt.isAuthorized, getPosts);
-router.get('/getPostsByAllegiance', jwt.isAuthorized, getPostsByAllegiance);
+router.post('/getPostsByAllegiance', jwt.isAuthorized, getPostsByAllegiance);
 
 
 module.exports = router;
@@ -29,9 +29,10 @@ function getPosts(req, res, next) {
 }
 
 function getPostsByAllegiance(req, res, next) {
+    console.log("getPostsByAllegiance -> req.body.allegience", req.body.allegience);
     db.Post.find({
-            'postedBy': req.params.userId,
-            'allegiance': req.params.allegiance
+            'postedBy': mongoose.Types.ObjectId(req.userId),
+            'allegiance': req.body.allegience
         })
         .then(data => data ? res.json(data) : res.status(400).json({
             message: "Erreur"

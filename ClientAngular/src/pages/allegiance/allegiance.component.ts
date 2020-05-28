@@ -27,7 +27,7 @@ export class AllegianceComponent implements OnInit {
 
   async getPosts() {
     console.log('3');
-    const response = await this.postService.getPosts().toPromise();
+    const response = await this.postService.getPostsByAllegience('demon').toPromise();
     if (response) {
       console.log("AllegianceComponent -> getPosts -> response", response);
     }

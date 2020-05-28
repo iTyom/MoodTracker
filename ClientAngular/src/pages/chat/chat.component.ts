@@ -3,6 +3,7 @@ import { SocketService } from 'src/services/websocket.service';
 import { PostService } from 'src/services/post.service';
 import { AuthService } from 'src/services/auth.service';
 import { Post } from 'src/models/post.model';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-chat',
@@ -13,22 +14,52 @@ import { Post } from 'src/models/post.model';
 export class ChatComponent implements OnInit {
   post: Post = new Post();
   messageList: string[] = [];
-
+  demonPosts: Post[] = [];
+  angePosts: Post[] = [];
   constructor(private socketService: SocketService, private postService: PostService, private authService: AuthService) {
+    this.init();
+  }
 
+  init() {
+    this.getPosts();
   }
 
   addPost() {
     const response = this.postService.addPost(this.post).toPromise();
-    console.log("ChatComponent -> addPost -> response", response);
-
   }
 
-  getPosts() {
+  addAngePost() {
+    this.post.allegiance = 'ange';
+    this.angePosts.push(this.post);
+    this.addPost();
+    this.post = new Post();
+  }
+
+  addDemonPost() {
+    this.post.allegiance = 'demon';
+    this.demonPosts.push(this.post);
+    this.addPost();
+  }
+
+  async getPosts() {
+    this.demonPosts = await this.postService.getPostsByAllegience("demon").toPromise() as Post[];
+    this.angePosts = await this.postService.getPostsByAllegience("ange").toPromise() as Post[];
   }
 
   ngOnInit() {
-    this.post.allegiance = "demon";
+    this.post.allegiance = "ange";
+    this.getPosts();
     // this.postService.
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 }
