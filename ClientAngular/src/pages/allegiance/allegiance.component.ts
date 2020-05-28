@@ -39,7 +39,7 @@ export class AllegianceComponent implements OnInit {
   }
 
   async getPosts() {
-    const response = await this.postService.getPost().toPromise();
+    const response = await this.postService.getPosts().toPromise();
     if (response) {
       this.posts = response as Post[];
     }
