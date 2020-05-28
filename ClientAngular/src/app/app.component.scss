@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+
+  button.btn-logout {
+    cursor: pointer;
+    background: none;
+    border-width: 0;
+    font-size: 25px;
+    min-height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+    min-width: 35px;
+    transform: translate3d(0, 0, 0);
+
+    i {
+      color: black;
+    }
+  }
+}

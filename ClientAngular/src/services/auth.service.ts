@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/models/login.model';
+import { Router } from '@angular/router';
 const TOKEN_KEY = "token";
 const USER_KEY = "user";
 
@@ -14,7 +15,7 @@ export class AuthService {
     private authApiRegister = "http://localhost:8004/auth/register";
 
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient, private router: Router) { }
 
     public login(login: string) {
         const headers = new HttpHeaders({
@@ -39,6 +40,17 @@ export class AuthService {
 
     getUser() {
         return localStorage.getItem(USER_KEY);
+    }
+
+    logout() {
+        this.router.navigate(["login"]);
+        return localStorage.removeItem(TOKEN_KEY);
+    }
+
+    isUserConnected() {
+        if (this.getToken() === null)
+            return false;
+        return true;
     }
 
 }

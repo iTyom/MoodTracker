@@ -1,13 +1,16 @@
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-    <div class="container">
-      <mat-toolbar>
-        <mat-toolbar-row>
-          <span> <a style="color:black" class="nav-link" routerLink="chat">Home</a></span>
-          <span> <a style="color:black" class="nav-link" routerLink="chat">Chat</a></span>
-          <span> <a style="color:black" class="nav-link" routerLink="moods">Moods</a></span>
-        </mat-toolbar-row>
-        </mat-toolbar>
-    </div>
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse" *ngIf="authService.isUserConnected()">
+  <div class="container">
+
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span> <button class="btn-logout" (click)="logout()"><i
+              class="material-icons">keyboard_backspace</i></button></span>
+        <span> <a style="color:black" class="nav-link" routerLink="chat">Home</a></span>
+        <span> <a style="color:black" class="nav-link" routerLink="chat">Chat</a></span>
+        <span> <a style="color:black" class="nav-link" routerLink="moods">Moods</a></span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>
