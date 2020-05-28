@@ -21,7 +21,9 @@ function getPosts(req, res, next) {
             if (data) {
                 res.json(data);
             } else {
-                message: "Erreur"
+                res.status(400).json({
+                    message: "Erreur"
+                })
             }
         }).catch(err => next(err));
 }
