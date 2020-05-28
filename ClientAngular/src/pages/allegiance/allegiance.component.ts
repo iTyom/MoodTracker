@@ -11,7 +11,11 @@ import { AuthService } from 'src/services/auth.service';
 })
 export class AllegianceComponent implements OnInit {
 
-  public posts: Post;
+  private posts: Post;
+  public demons: [];
+  public angels: [];
+  public ratioAngels: int;
+  public ratioDemons: int;
 
   constructor(private socketService: SocketService, private postService: PostService, private authService: AuthService) { }
 
