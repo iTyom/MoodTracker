@@ -1,3 +1,31 @@
-<p>
-  {{ posts }}
-</p>
+<div style="display: flex">
+  <div style="width: 50%; color: red">
+    <h3>Liste des messages diaboliques</h3>
+    <ul>
+      <li style="width: 90%" *ngFor="let demon of demons">
+        <p>{{ this.demon.text }} </p>
+      </li>
+    </ul>
+  </div>
+
+  <div style="width: 50%; color: blue">
+    <h3>Liste des messages bienveillants</h3>
+    <ul>
+      <li style="width: 90%" *ngFor="let angel of angels">
+        <p> {{ this.angel.text }} </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div style="margin-top: 5%; display: flex">
+  <div style="width: 50%">
+    <h3> Affinité bienveillantes </h3>
+    <p> Vous avez été {{ this.ratioAngels | number : '1.2-2' }} % ange. </p>
+  </div>
+  <div style="width: 50%">
+    <h3> Affinité diaboliques </h3>
+    <p>Vous avez été {{ this.ratioDemons | number : '1.2-2' }} % démon. </p>
+  </div>
+
+</div>
