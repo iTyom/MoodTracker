@@ -1,8 +1,53 @@
 app-allegiance {
-  .wrapper-result {
-    margin-top: 5%;
+
+
+  .wrapper {
     display: flex;
-    background-position: center;
-    background-size: cover;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .img {
+      background-position: center;
+      background-size: cover;
+      height: 300px;
+      width: 100%;
+      max-height: 400px;
+      max-width: 480px;
+    }
+
+    .wrapper-box {
+      width: 60%;
+
+      .box {
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .ange {
+        background-color: #d0e3ed;
+        -webkit-box-shadow: 0px 2px 29px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 2px 29px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 2px 29px -1px rgba(0, 0, 0, 0.75);
+      }
+
+      .demon {
+        background-color: #de3141;
+        margin-top: -10px;
+        margin-left: 30px;
+
+        p {
+          color: white;
+        }
+      }
+    }
   }
+
 }
