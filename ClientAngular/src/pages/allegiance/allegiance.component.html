@@ -1,4 +1,4 @@
-<div style="display: flex">
+<!-- <div style="display: flex">
   <div style="width: 50%; color: red">
     <h3>Liste des messages diaboliques</h3>
     <ul>
@@ -16,9 +16,9 @@
       </li>
     </ul>
   </div>
-</div>
-
-<div style="margin-top: 5%; display: flex">
+</div> -->
+<div class="wrapper-result" style=""
+  [style.background]="this.ratioAngels < this.ratioDemons ? 'url(../../../../assets/img/demon.png)' : 'url(../../../../assets/img/demon.png)'">
   <div style="width: 50%">
     <h3> Affinité bienveillantes </h3>
     <p> Vous avez été {{ this.ratioAngels | number : '1.2-2' }} % ange. </p>

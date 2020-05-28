@@ -19,7 +19,7 @@ app-chat {
 
     .form-post {
       position: absolute;
-      bottom: -30px;
+      bottom: 0px;
       width: 100%;
 
       button {
@@ -29,6 +29,10 @@ app-chat {
 
       .password-field {
         width: 99%;
+
+        .mat-form-field-wrapper {
+          padding-bottom: 0px;
+        }
       }
     }
 

@@ -41,23 +41,17 @@ export class AllegianceComponent implements OnInit {
   async getPosts() {
     const response = await this.postService.getPostsByAllegience('demon').toPromise();
     if (response) {
-      console.log("AllegianceComponent -> getPosts -> response", response);
-
       this.posts = response as Post[];
     }
   }
 
-  async getDemonMessages()
-  {
-      this.demons = this.posts.filter(a => a.allegiance === 'demon');
-
-      this.ratioDemons = (this.demons.length/this.posts.length) * 100
+  async getDemonMessages() {
+    this.demons = this.posts.filter(a => a.allegiance === 'demon');
+    this.ratioDemons = (this.demons.length / this.posts.length) * 100;
   }
 
-  async getAngelMessages()
-  {
-      this.angels = this.posts.filter(a => a.allegiance === 'ange');
-
-      this.ratioAngels = (this.angels.length/this.posts.length) * 100
+  async getAngelMessages() {
+    this.angels = this.posts.filter(a => a.allegiance === 'ange');
+    this.ratioAngels = (this.angels.length / this.posts.length) * 100;
   }
 }

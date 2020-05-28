@@ -24,10 +24,10 @@ export class ChatComponent implements OnInit {
       if (!authService.isUserConnected()) {
         this.router.navigate(['/login'])
       }
-      this.init();
   }
 
-  init() {
+  ngOnInit() {
+    this.post.allegiance = "ange";
     this.getPosts();
   }
 
@@ -54,11 +54,6 @@ export class ChatComponent implements OnInit {
     this.angePosts = await this.postService.getPostsByAllegience("ange").toPromise() as Post[];
   }
 
-  ngOnInit() {
-    this.post.allegiance = "ange";
-    this.getPosts();
-    // this.postService.
-  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
