@@ -17,16 +17,38 @@ export class AllegianceComponent implements OnInit {
 
   ngOnInit() {
     this.init();
+    console.log('saluuuuuuuuuuuuut');
   }
 
   async init() {
     await this.getPosts();
+    await this.getDemonMessages();
+    await this.getAngelMessages();
+    console.log('coucou');
   }
 
   async getPosts() {
+    console.log('3');
     const response = await this.postService.getPosts().toPromise();
     if (response) {
+      console.log("AllegianceComponent -> getPosts -> response", response);
+
+      this.posts = response;
     }
+  }
+
+  async getDemonMessages() {
+    this.demons = this.posts.filter(a => a.allegiance === 'demon');
+
+    this.ratioDemons = (this.demons.length / this.posts.length) * 100
+
+
+  }
+
+  async getAngelMessages() {
+    this.angels = this.posts.filter(a => a.allegiance === 'ange');
+
+    this.ratioAngels = (this.angels.length / this.posts.length) * 100
   }
 
 }

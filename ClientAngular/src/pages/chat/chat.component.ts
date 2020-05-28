@@ -39,6 +39,7 @@ export class ChatComponent implements OnInit {
     this.post.allegiance = 'demon';
     this.demonPosts.push(this.post);
     this.addPost();
+    this.post = new Post();
   }
 
   async getPosts() {
