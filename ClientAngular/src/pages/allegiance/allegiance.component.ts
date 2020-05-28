@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/models/post.model';
+import { SocketService } from 'src/services/websocket.service';
+import { PostService } from 'src/services/post.service';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-allegiance',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllegianceComponent implements OnInit {
 
-  constructor() { }
+  public posts: Post;
+
+  constructor(private socketService: SocketService, private postService: PostService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.init();
+    console.log('saluuuuuuuuuuuuut');
+  }
+
+  async init() {
+    this.posts = await this.getPosts().toPromise();
+    console.log('coucou');
+  }
+
+  async getPosts() {
+    console.log('3');
+    this.postService.getPosts();
   }
 
 }
