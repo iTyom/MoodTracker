@@ -14,7 +14,7 @@ module.exports = router;
 
 function getPosts(req, res, next) {
     db.Post.find({
-            'postedBy._id': req.params.userId
+            'postedBy._id': req.userId
         })
         .then(data => data ? res.json(data) : res.status(400).json({
             message: "Erreur"
