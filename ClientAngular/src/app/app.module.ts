@@ -21,6 +21,8 @@ import { RegisterComponent } from '../pages/register/register.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ChatComponent } from '../pages/chat/chat.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AllegianceComponent} from '../pages/allegiance/allegiance.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 const config: SocketIoConfig = { url: 'http://localhost:8008', options: {} };
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8008', options: {} };
     LoginComponent,
     RegisterComponent,
     ChatComponent,
+    AllegianceComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8008', options: {} };
     FormsModule,
     HttpClientModule,
     DragDropModule,
+    MatToolbarModule,
     // ServiceWorkerModule.register('sw.js', { enabled: true }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     SocketIoModule.forRoot(config),
