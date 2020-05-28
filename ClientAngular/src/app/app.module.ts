@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../pages/login/login.component';
@@ -23,6 +21,7 @@ import { ChatComponent } from '../pages/chat/chat.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AllegianceComponent} from '../pages/allegiance/allegiance.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HomeComponent } from '../pages/home/home.component';
 const config: SocketIoConfig = { url: 'http://localhost:8008', options: {} };
 @NgModule({
   declarations: [
@@ -31,6 +30,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8008', options: {} };
     RegisterComponent,
     ChatComponent,
     AllegianceComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

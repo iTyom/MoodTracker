@@ -4,6 +4,7 @@ import { LoginComponent } from '../pages/login/login.component';
 import { ChatComponent } from '../pages/chat/chat.component';
 import { AllegianceComponent} from '../pages/allegiance/allegiance.component';
 import { RegisterComponent } from 'src/pages/register/register.component';
+import { HomeComponent } from 'src/pages/home/home.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'moods', component: AllegianceComponent },
+  { path: 'home', component: HomeComponent },
 ];
 
 @NgModule({
